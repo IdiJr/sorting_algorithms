@@ -1,26 +1,6 @@
 #include "sort.h"
 
 /**
- * merge_recursion - recursive function that merge sort an array
- * @arr: copy array
- * @array: array to merge sort
- * @left: index of the left element
- * @right: index of the right element
- */
-void merge_recursion(int *arr, int *array, size_t left, size_t right)
-{
-	size_t middle;
-
-	if (right - left > 1)
-	{
-		middle = (right - left) / 2 + left;
-		merge_recursion(arr, array, left, middle);
-		merge_recursion(arr, array, middle, right);
-		merge_subarray(arr, array, left, middle, right);
-	}
-}
-
-/**
  * merge_subarray - merges subarrays
  * @arr: copy array
  * @array: array to merge
@@ -57,6 +37,26 @@ void merge_subarray(int *arr, int *array, size_t left,
 
 	printf("[Done]: ");
 	print_array(array + left, right - left);
+}
+
+/**
+ * merge_recursion - recursive function that merge sort an array
+ * @arr: copy array
+ * @array: array to merge sort
+ * @left: index of the left element
+ * @right: index of the right element
+ */
+void merge_recursion(int *arr, int *array, size_t left, size_t right)
+{
+	size_t middle;
+
+	if (right - left > 1)
+	{
+		middle = (right - left) / 2 + left;
+		merge_recursion(arr, array, left, middle);
+		merge_recursion(arr, array, middle, right);
+		merge_subarray(arr, array, left, middle, right);
+	}
 }
 
 /**
