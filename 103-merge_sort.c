@@ -1,24 +1,6 @@
 #include "sort.h"
 
 /**
- * merge_sort - sorts an array with the Merge Sort algorithm
- * @array: array of ints to sort
- * @size: size of the array
- */
-void merge_sort(int *array, size_t size)
-{
-	int *arr;
-
-	if (!array || size < 2)
-		return;
-
-	arr = malloc(sizeof(int) * size);
-
-	merge_recursion(arr, array, 0, size);
-	free(arr);
-}
-
-/**
  * merge_recursion - recursive function that merge sort an array
  * @arr: copy array
  * @array: array to merge sort
@@ -75,4 +57,22 @@ void merge_subarray(int *arr, int *array, size_t left,
 
 	printf("[Done]: ");
 	print_array(array + left, right - left);
+}
+
+/**
+ * merge_sort - sorts an array with the Merge Sort algorithm
+ * @array: array of ints to sort
+ * @size: size of the array
+ */
+void merge_sort(int *array, size_t size)
+{
+	int *arr;
+
+	if (!array || size < 2)
+		return;
+
+	arr = malloc(sizeof(int) * size);
+
+	merge_recursion(arr, array, 0, size);
+	free(arr);
 }
