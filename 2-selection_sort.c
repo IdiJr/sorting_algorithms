@@ -1,41 +1,30 @@
 #include "sort.h"
 /**
- * _swap_bubble - function to swap/sort.
- *@a: variable to swap.
- *@b: variable to swap.
- * Return: void.
- */
-void _swap_bubble(int *a, int *b)
-{
-	int temp;
-
-	temp = *a;
-	*a = *b;
-	*b = temp;
-}
-
-/**
- * selection_sort - sorting array via selection sort method.
- *@array: array to be sorted.
- *@size: size of array.
- * Return: Always 0
+ *selection_sort- sorts using selection sort algorithm
+ *@array: array to be sorted
+ *@size: size of the array
  */
 void selection_sort(int *array, size_t size)
 {
-	size_t i, j;
-	int *min_idx;
+	size_t i, j, k;
+	int tmp;
 
-	for (i = 0;  i < size - 1; i++)
+	if (!array || !size)
+		return;
+	for (i = 0; i < size - 1; i++)
 	{
-		min_idx = array + i;
-		for (j = i + 1; j < size; j++)
+		for (j = size - 1, k = i + 1; j > i; j--)
 		{
-			if (array[j] < *min_idx)
-				min_idx = (array + j);
+			if (array[j] < array[k])
+			{
+				k = j;
+			}
 		}
-		if ((array + i) != min_idx)
+		if (array[i] > array[k])
 		{
-			swap_bubble(array + i, min_idx);
+			tmp = array[i];
+			array[i] = array[k];
+			array[k] = tmp;
 			print_array(array, size);
 		}
 	}
