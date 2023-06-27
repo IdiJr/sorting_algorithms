@@ -19,34 +19,34 @@ void merge_sort(int *array, size_t size)
 }
 
 /**
- * _merge_recursion - recursive function that merge sort an array
+ * merge_recursion - recursive function that merge sort an array
  * @arr: copy array
  * @array: array to merge sort
  * @left: index of the left element
  * @right: index of the right element
  */
-void _merge_recursion(int *arr, int *array, size_t left, size_t right)
+void merge_recursion(int *arr, int *array, size_t left, size_t right)
 {
 	size_t middle;
 
 	if (right - left > 1)
 	{
 		middle = (right - left) / 2 + left;
-		_merge_recursion(arr, array, left, middle);
-		_merge_recursion(arr, array, middle, right);
-		_merge_subarray(arr, array, left, middle, right);
+		merge_recursion(arr, array, left, middle);
+		merge_recursion(arr, array, middle, right);
+		merge_subarray(arr, array, left, middle, right);
 	}
 }
 
 /**
- * _merge_subarray - merges subarrays
+ * merge_subarray - merges subarrays
  * @arr: copy array
  * @array: array to merge
  * @left: index of the left element
  * @middle: index of the middle element
  * @right: index of the right element
  */
-void _merge_subarray(int *arr, int *array, size_t left,
+void merge_subarray(int *arr, int *array, size_t left,
 		size_t middle, size_t right)
 {
 	size_t i, j, k = 0;
