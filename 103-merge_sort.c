@@ -14,7 +14,7 @@ void merge_sort(int *array, size_t size)
 
 	arr = malloc(sizeof(int) * size);
 
-	_merge_recursion(arr, array, 0, size);
+	merge_recursion(arr, array, 0, size);
 	free(arr);
 }
 
