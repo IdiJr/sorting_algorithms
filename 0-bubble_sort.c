@@ -1,48 +1,31 @@
 #include "sort.h"
-
 /**
- * _swap_bubble - implements swap method.
- *@a: element to be swapped.
- *@b: element to be swapped.
- * Return: nothing.
+ *bubble_sort - Function that sorts an array of integer
+ *using bubble sort algorithm
+ *@array: array of integer
+ *@size: size of array
  */
-
-void _swap_bubble(int *a, int *b)
-{
-	int temp;
-
-	temp = *a;
-	*a = *b;
-	*b = temp;
-}
-
-/**
- * bubble_sort - sorts array using bubble sort algorithm.
- *@array: array to be sorted.
- *@size: size to be sorted.
- * Return: void.
- */
-
 void bubble_sort(int *array, size_t size)
 {
-	size_t i, sz = size;
-	bool booln = false;
+	int tmp;
+	size_t i, k;
 
-	if (array == NULL || size < 2)
+	if (!array || !size)
 		return;
 
-	while (booln == false)
+	i = 0;
+	while (i < size)
 	{
-		booln = true;
-		for (i = 0; i < sz - 1; i++)
+		for (k = 0; k < size - 1; k++)
 		{
-			if (array[i] > array[i + 1])
+			if (array[k] > array[k + 1])
 			{
-				swap_bubble(array + i, array + i + 1);
+				tmp = array[k];
+				array[k] = array[k + 1];
+				array[k + 1] = tmp;
 				print_array(array, size);
-				booln = false;
 			}
 		}
-		sz--;
+		i++;
 	}
 }
